@@ -7,7 +7,7 @@ public class ButtonOpacityChange : MonoBehaviour
 {
     public Button button;
     private Color normalColor;
-    public Color highlightedColor; // “§–¾“x‚ğ•Ï‚¦‚éÛ‚ÌF
+    public Color highlightedColor;
     private AudioSource enter_sound;
     void Start()
     {
