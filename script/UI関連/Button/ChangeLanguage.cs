@@ -7,30 +7,30 @@ using TMPro;
 
 public class ChangeLanguage : MonoBehaviour
 {
-    [SerializeField] private TMP_Dropdown dropdown_tmp; // TMPro”Åƒhƒƒbƒvƒ_ƒEƒ“
-    [SerializeField] private Dropdown dropdown_lgc; // Legacy”Åƒhƒƒbƒvƒ_ƒEƒ“
+    [SerializeField] private TMP_Dropdown dropdown_tmp; // TMProç‰ˆãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³
+    [SerializeField] private Dropdown dropdown_lgc; // Legacyç‰ˆãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³
 
     private const string selectedLanguageKey = "SelectedLanguage";
 
     void Start()
     {
-        // ƒZ[ƒu‚³‚ê‚½Œ¾Œê‚ğ“Ç‚İ‚ŞBƒZ[ƒu‚³‚ê‚Ä‚¢‚È‚¯‚ê‚ÎƒfƒtƒHƒ‹ƒg’l‚ğg—p‚·‚éB
+        // ã‚»ãƒ¼ãƒ–ã•ã‚ŒãŸè¨€èªã‚’èª­ã¿è¾¼ã‚€ã€‚ã‚»ãƒ¼ãƒ–ã•ã‚Œã¦ã„ãªã‘ã‚Œã°ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’ä½¿ç”¨ã™ã‚‹ã€‚
         int savedValue = PlayerPrefs.GetInt(selectedLanguageKey, 0);
         if (dropdown_tmp != null)
             dropdown_tmp.value = savedValue;
         else if (dropdown_lgc != null)
             dropdown_lgc.value = savedValue;
 
-        ChangeLang(); // Œ¾Œê‚ğ•ÏX‚·‚é
+        ChangeLang(); // è¨€èªã‚’å¤‰æ›´ã™ã‚‹
     }
 
-    // ƒhƒƒbƒvƒ_ƒEƒ“‚Ì’l‚ª•ÏX‚³‚ê‚½‚ÌƒCƒxƒ“ƒg‚©‚çŒÄ‚Ño‚·—p
+    // ãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³ã®å€¤ãŒå¤‰æ›´ã•ã‚ŒãŸæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆã‹ã‚‰å‘¼ã³å‡ºã™ç”¨
     public void ChangeSelected()
     {
         ChangeLang();
     }
 
-    // ÀÛ‚Ég—pŒ¾Œê‚ğ•ÏX‚·‚éˆ—
+    // å®Ÿéš›ã«ä½¿ç”¨è¨€èªã‚’å¤‰æ›´ã™ã‚‹å‡¦ç†
     private async Task ChangeLang()
     {
         int selectedValue = 0;
@@ -39,41 +39,41 @@ public class ChangeLanguage : MonoBehaviour
         else if (dropdown_lgc != null)
             selectedValue = dropdown_lgc.value;
 
-        // ‚±‚Ì‚Ü‚Üg‚¤ê‡Acase“à‚ÌŒ¾Œêw’è‚Æƒhƒƒbƒvƒ_ƒEƒ““à‚Ì€–Ú‡‚Í‡‚í‚¹‚Ä‚¨‚­‚±‚Æ
+        // ã“ã®ã¾ã¾ä½¿ã†å ´åˆã€caseå†…ã®è¨€èªæŒ‡å®šã¨ãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³å†…ã®é …ç›®é †ã¯åˆã‚ã›ã¦ãŠãã“ã¨
         switch (selectedValue)
         {
-            case 0: // “ú–{Œê
+            case 0: // æ—¥æœ¬èª
                 LocalizationSettings.SelectedLocale = Locale.CreateLocale("ja");
                 break;
-            case 1: // ‰pŒê
+            case 1: // è‹±èª
                 LocalizationSettings.SelectedLocale = Locale.CreateLocale("en");
                 break;
-            case 2: // ’†‘Œê(ŠÈ‘Ìš)
+            case 2: // ä¸­å›½èª(ç°¡ä½“å­—)
                 LocalizationSettings.SelectedLocale = Locale.CreateLocale("zh-Hans");
                 break;
-            case 3: // ’†‘Œê(”É‘Ìš)
+            case 3: // ä¸­å›½èª(ç¹ä½“å­—)
                 LocalizationSettings.SelectedLocale = Locale.CreateLocale("zh-TW");
                 break;
         }
         await LocalizationSettings.InitializationOperation.Task;
 
-        // ‘I‘ğ‚³‚ê‚½Œ¾Œê‚ğ•Û‘¶‚·‚é
+        // é¸æŠã•ã‚ŒãŸè¨€èªã‚’ä¿å­˜ã™ã‚‹
         PlayerPrefs.SetInt(selectedLanguageKey, selectedValue);
 
-        // ‘I‘ğ‚³‚ê‚½Œ¾Œê‚ğLanguageManager‚É”½‰f‚³‚¹‚é
+        // é¸æŠã•ã‚ŒãŸè¨€èªã‚’LanguageManagerã«åæ˜ ã•ã›ã‚‹
         LanguageManager.SelectedLanguage = selectedValue;
     }
 
-    // •K—v‚É‰‚¶‚ÄAƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ğI—¹‚·‚éÛ‚ÉƒZ[ƒu‚·‚é
+    // å¿…è¦ã«å¿œã˜ã¦ã€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’çµ‚äº†ã™ã‚‹éš›ã«ã‚»ãƒ¼ãƒ–ã™ã‚‹
     void OnApplicationQuit()
     {
         PlayerPrefs.Save();
     }
 }
 
-// •Ê‚ÌƒXƒNƒŠƒvƒg‚©‚çŒ¾Œê‚ğQÆ‚·‚é‚½‚ß‚ÌƒNƒ‰ƒX
+// åˆ¥ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‹ã‚‰è¨€èªã‚’å‚ç…§ã™ã‚‹ãŸã‚ã®ã‚¯ãƒ©ã‚¹
 public static class LanguageManager
 {
-    // ‘I‘ğ‚³‚ê‚½Œ¾Œê‚Ì’l
+    // é¸æŠã•ã‚ŒãŸè¨€èªã®å€¤
     public static int SelectedLanguage { get; set; } = 0;
 }
