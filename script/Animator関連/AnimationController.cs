@@ -24,7 +24,7 @@ public class AnimationController : MonoBehaviour
             animator.SetBool(Talk, true);
             animator.SetBool(Stand, false);
             Vector3 targetDirection = targetObject.position - transform.position;
-            targetDirection.y = 0; // ƒIƒuƒWƒFƒNƒg‚ªã‰º‚É‰ñ“]‚µ‚È‚¢‚æ‚¤‚Éy•ûŒü‚Ì•Ï‰»‚ğ–³‹
+            targetDirection.y = 0; // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒä¸Šä¸‹ã«å›è»¢ã—ãªã„ã‚ˆã†ã«yæ–¹å‘ã®å¤‰åŒ–ã‚’ç„¡è¦–
             Quaternion rotation = Quaternion.LookRotation(targetDirection);
             transform.rotation = rotation;
         }
