@@ -7,16 +7,16 @@ using UnityEngine.UI;
 public class ohuda_pt : MonoBehaviour
 {
     private game_clear_hantei current_pt;
-    private KeyCode displayKey = KeyCode.E;//ƒ†[ƒU[‘¤‚Ì‘€ìƒL[
-    private GameObject this_obj;//ƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg‚ğ”ñ•\¦
-    private Outline outline;//ƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚éƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ÌƒAƒEƒgƒ‰ƒCƒ“
-    private string GameObject_name= "Main Camera";//game_clear_hantei‚ÉƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg
+    private KeyCode displayKey_E = KeyCode.E;//ãƒ¦ãƒ¼ã‚¶ãƒ¼å´ã®æ“ä½œã‚­ãƒ¼
+    private GameObject this_obj;//ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’éè¡¨ç¤º
+    private Outline outline;//ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã‚‹ã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¢ã‚¦ãƒˆãƒ©ã‚¤ãƒ³
+    private string GameObject_name= "Main Camera";//game_clear_hanteiã«ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
     private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameObject targetObject1 = GameObject.Find("ŒäDæ‰¹º");
+        GameObject targetObject1 = GameObject.Find("å¾¡æœ­å–éŸ³å£°");
         audioSource = targetObject1.GetComponent<AudioSource>();
         GameObject targetObject = GameObject.Find(GameObject_name);
         current_pt = targetObject.GetComponent<game_clear_hantei>();
@@ -26,11 +26,9 @@ public class ohuda_pt : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if ((outline.enabled == true && Input.GetKey(displayKey))){
-            
+        if ((outline.enabled == true && Input.GetKey(displayKey_E))){
             this_obj.SetActive(false);
             current_pt.point += 1;
             audioSource.Play();
