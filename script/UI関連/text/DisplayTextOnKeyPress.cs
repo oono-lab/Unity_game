@@ -71,9 +71,6 @@ public class DisplayTextOnKeyPress : MonoBehaviour
             {     
                 displayText.enabled = true;
             }
-            
-
-
             script_hantei(false);
         }
             if (displayText.enabled == true)
@@ -81,8 +78,6 @@ public class DisplayTextOnKeyPress : MonoBehaviour
             if (currentIndex < fullTexts_show[count].Length)
             {   
                 timer += Time.deltaTime;
-
-            
                 if (timer >= textDisplaySpeed)
                 {
                     currentText += fullTexts_show[count][currentIndex];
@@ -115,10 +110,7 @@ public class DisplayTextOnKeyPress : MonoBehaviour
                     }
                     
                     displayText.enabled = false;
-                    if (hantei == 2)
-                    {
-                        timelineDirector.Play();
-                    }
+                    if (hantei == 2) timelineDirector.Play();
                     hantei = 0;
                     
                 }
@@ -144,10 +136,7 @@ public class DisplayTextOnKeyPress : MonoBehaviour
         foreach (GameObject obj in targetObjects)
         {
             MonoBehaviour[] scripts = obj.GetComponents<MonoBehaviour>();
-            foreach (MonoBehaviour script in scripts)
-            {
-                script.enabled = hantei;
-            }
+            foreach (MonoBehaviour script in scripts) script.enabled = hantei;
         }
     }
     void OnLanguageChanged()
