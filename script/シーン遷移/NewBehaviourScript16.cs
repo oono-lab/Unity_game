@@ -10,7 +10,6 @@ public class NewBehaviourScript16 : MonoBehaviour
     public Outline outline;
     private Move sound_hantei;
     // Start is called before the first frame update
-
     void Start()
     {
         GameObject targetObject = GameObject.Find("Main Camera");
@@ -30,10 +29,7 @@ public class NewBehaviourScript16 : MonoBehaviour
         foreach (GameObject obj in targetObjects)
         {
             MonoBehaviour[] scripts = obj.GetComponents<MonoBehaviour>();
-            foreach (MonoBehaviour script in scripts)
-            {
-                script.enabled = hantei;
-            }
+            foreach (MonoBehaviour script in scripts) script.enabled = hantei;
         }
     }
 }
