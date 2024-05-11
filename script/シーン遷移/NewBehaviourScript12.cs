@@ -44,10 +44,7 @@ public class NewBehaviourScript12 : MonoBehaviour
         foreach (GameObject obj in gameObjects)
         {
             MonoBehaviour[] scripts = obj.GetComponents<MonoBehaviour>();
-            foreach (MonoBehaviour script in scripts)
-            {
-                script.enabled = hantei;
-            }
+            foreach (MonoBehaviour script in scripts) script.enabled = hantei; 
         }
     }
 }
