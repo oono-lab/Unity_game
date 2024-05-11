@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class game_clear_hantei : MonoBehaviour
 {
-    public int point = 0;//現在の御札の枚数
-    public string clear = "clear_scene";//クリアシーン
+    public int point = 0;//迴ｾ蝨ｨ縺ｮ蠕｡譛ｭ縺ｮ譫壽焚
+    public string clear = "clear_scene";//繧ｯ繝ｪ繧｢繧ｷ繝ｼ繝ｳ
     public Boolean clear_hantei = false;
-    public int goal = 6;//最終目標の枚数
+    public int goal = 6;//譛邨ら岼讓吶�ｮ譫壽焚
     public AudioSource asioto;
     // Start is called before the first frame update
     void Start()
