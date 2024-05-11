@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class NewBehaviourScript9 : MonoBehaviour
 {
-    public Outline outline; // ƒAƒEƒgƒ‰ƒCƒ“‚ğ•\¦‚·‚é‚½‚ß‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg
+    public Outline outline; // ã‚¢ã‚¦ãƒˆãƒ©ã‚¤ãƒ³ã‚’è¡¨ç¤ºã™ã‚‹ãŸã‚ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
 
     private void Start()
     {
@@ -15,23 +15,14 @@ public class NewBehaviourScript9 : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // Õ“Ë‚µ‚½ƒIƒuƒWƒFƒNƒg‚ª“Á’è‚Ìƒ^ƒO‚ğ‚Á‚Ä‚¢‚éê‡‚Éˆ—‚ğs‚¤
-        if (other.CompareTag("TargetTag"))
-        {
-            outline.enabled = true;
-            // ƒAƒEƒgƒ‰ƒCƒ“‚ğ”ñ•\¦‚É‚·‚é
-
-        }
+        // è¡çªã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç‰¹å®šã®ã‚¿ã‚°ã‚’æŒã£ã¦ã„ã‚‹å ´åˆã«å‡¦ç†ã‚’è¡Œã†
+        if (other.CompareTag("TargetTag")) outline.enabled = true;
     }
 
     void OnTriggerExit(Collider other)
     {
-        // Õ“Ë‚µ‚Ä‚¢‚½ƒIƒuƒWƒFƒNƒg‚ª—£‚ê‚½ê‡‚Éˆ—‚ğs‚¤
-        if (other.CompareTag("TargetTag"))
-        {
-            outline.enabled = false;
-            // ƒAƒEƒgƒ‰ƒCƒ“‚ğÄ‚Ñ•\¦‚·‚é
+        // è¡çªã—ã¦ã„ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒé›¢ã‚ŒãŸå ´åˆã«å‡¦ç†ã‚’è¡Œã†
+        if (other.CompareTag("TargetTag"))  outline.enabled = false;
             
-        }
     }
 }
