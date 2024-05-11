@@ -7,17 +7,19 @@ using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class NewBehaviourScript10 : MonoBehaviour
 {
-    public GameObject[] targetObjects; // ëŒè€ÇÃÉIÉuÉWÉFÉNÉgÇÃîzóÒ
+    public GameObject[] targetObjects; // ÂØæË±°„ÅÆ„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„ÅÆÈÖçÂàó
     public TextMeshProUGUI displayText;
-    private string fullText="Ç±Ç±Ç©ÇÁÇ≥Ç´Ç…ÇÕãºîûâÆÇÕÇ»Ç≥ÇªÇ§ÇæÅB";
+    private string fullText="„Åì„Åì„Åã„Çâ„Åï„Åç„Å´„ÅØËïéÈ∫¶Â±ã„ÅØ„Å™„Åï„Åù„ÅÜ„Å†„ÄÇ";
     private string fullText_en = "There does not seem to be any buckwheat noodle shops beyond this point.";
     private string fullTexts_show;
     private string currentText = "";
     private int currentIndex = 0;
     private Move sound_hantei;
     private AudioSource text_Audio;
-    private float textDisplaySpeed = 0.05f; // ÉeÉLÉXÉgÇï\é¶Ç∑ÇÈë¨ìxÅiïbÅj
-    private float timer = 0f; // éûä‘åvë™ópÇÃÉ^ÉCÉ}Å[
+    private int Max_z=30;
+    private int Min_z=-20;
+    private float textDisplaySpeed = 0.05f; // „ÉÜ„Ç≠„Çπ„Éà„ÇíË°®Á§∫„Åô„ÇãÈÄüÂ∫¶ÔºàÁßíÔºâ
+    private float timer = 0f; // ÊôÇÈñìË®àÊ∏¨Áî®„ÅÆ„Çø„Ç§„Éû„Éº
     void Start()
     {
         GameObject targetObject1 = GameObject.Find("Canvas");
@@ -32,51 +34,27 @@ public class NewBehaviourScript10 : MonoBehaviour
     {
         OnLanguageChanged();
         Vector3 tmp = targetObjects[0].transform.position;
-        if (tmp.z>=30 || tmp.z<=-20)
+        if (tmp.z>=Max_z || tmp.z<=Min_z)
         {
             sound_hantei.StopAudio();
             script_hantei1(false);
             displayText.enabled = true;
-            // ï°êîÇÃÉIÉuÉWÉFÉNÉgÇ…ÉAÉ^ÉbÉ`Ç≥ÇÍÇΩì¡íËÇÃÉXÉNÉäÉvÉgÇñ≥å¯Ç…Ç∑ÇÈ
+            // Ë§áÊï∞„ÅÆ„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„Å´„Ç¢„Çø„ÉÉ„ÉÅ„Åï„Çå„ÅüÁâπÂÆö„ÅÆ„Çπ„ÇØ„É™„Éó„Éà„ÇíÁÑ°Âäπ„Å´„Åô„Çã
          
         }
         if(displayText.enabled == true)
         {
-            if (currentIndex < fullTexts_show.Length)
-            {
-                timer += Time.deltaTime; // É^ÉCÉ}Å[ÇçXêV
 
-                // éwíËÇµÇΩë¨ìxà»è„ÇÃéûä‘Ç™åoâﬂÇµÇΩÇÁéüÇÃï∂éöÇï\é¶Ç∑ÇÈ
-                if (timer >= textDisplaySpeed)
-                {
-                    currentText += fullTexts_show[currentIndex]; // éüÇÃï∂éöÇí«â¡
-                    displayText.text = currentText; // ÉeÉLÉXÉgÇçXêV
-                    currentIndex++; // ÉCÉìÉfÉbÉNÉXÇëùÇ‚Ç∑
-                    timer = 0f; // É^ÉCÉ}Å[ÇÉäÉZÉbÉg
-                }
-
-            }
             if (Input.GetMouseButtonDown(0))
             {
 
                 
-                if(tmp.z >= 30)
-                {
-                    targetObjects[0].transform.position = new Vector3(tmp.x, tmp.y, tmp.z - 1);
-                }
-                else
-                {
-                    targetObjects[0].transform.position = new Vector3(tmp.x, tmp.y, tmp.z + 1);
-                }
+                if(tmp.z >= Max_z) targetObjects[0].transform.position = new Vector3(tmp.x, tmp.y, tmp.z - 1);
+                else  targetObjects[0].transform.position = new Vector3(tmp.x, tmp.y, tmp.z + 1);
                 text_Audio.Play();
                 text_root1();
                 displayText.enabled = false;
                 script_hantei1(true);
-                
-
-                
-                
-
             }
         }
     }
@@ -85,10 +63,7 @@ public class NewBehaviourScript10 : MonoBehaviour
         foreach (GameObject obj in targetObjects)
         {
             MonoBehaviour[] scripts = obj.GetComponents<MonoBehaviour>();
-            foreach (MonoBehaviour script in scripts)
-            {
-                script.enabled = hantei;
-            }
+            foreach (MonoBehaviour script in scripts) script.enabled = hantei;
         }
     }
     void text_root1()
@@ -96,6 +71,24 @@ public class NewBehaviourScript10 : MonoBehaviour
         fullTexts_show = "";
         currentText = "";
         currentIndex = 0;
+    }
+    void Text_show_enabled()
+    {
+        if (currentIndex < fullTexts_show.Length)
+            {
+                timer += Time.deltaTime; // „Çø„Ç§„Éû„Éº„ÇíÊõ¥Êñ∞
+
+                // ÊåáÂÆö„Åó„ÅüÈÄüÂ∫¶‰ª•‰∏ä„ÅÆÊôÇÈñì„ÅåÁµåÈÅé„Åó„Åü„ÇâÊ¨°„ÅÆÊñáÂ≠ó„ÇíË°®Á§∫„Åô„Çã
+                if (timer >= textDisplaySpeed)
+                {
+                    currentText += fullTexts_show[currentIndex]; // Ê¨°„ÅÆÊñáÂ≠ó„ÇíËøΩÂä†
+                    displayText.text = currentText; // „ÉÜ„Ç≠„Çπ„Éà„ÇíÊõ¥Êñ∞
+                    currentIndex++; // „Ç§„É≥„Éá„ÉÉ„ÇØ„Çπ„ÇíÂ¢ó„ÇÑ„Åô
+                    timer = 0f; // „Çø„Ç§„Éû„Éº„Çí„É™„Çª„ÉÉ„Éà
+                }
+
+            }
+    
     }
     void OnLanguageChanged()
     {
