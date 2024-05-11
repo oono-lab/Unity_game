@@ -23,7 +23,7 @@ public class NewBehaviourScript13 : MonoBehaviour
     {
         GameObject targetObject1 = this.gameObject;
         Audio_crick = targetObject1.GetComponent<AudioSource>();
-        GameObject targetObject = GameObject.Find("ƒLƒƒƒ“ƒZƒ‹");
+        GameObject targetObject = GameObject.Find("Æ’LÆ’Æ’Æ’â€œÆ’ZÆ’â€¹");
         Audio_crick_cancel = targetObject.GetComponent<AudioSource>();
         button_active1(false);
         Ui.SetActive(false);
@@ -35,8 +35,6 @@ public class NewBehaviourScript13 : MonoBehaviour
     {
         if ((Input.GetKey(KeyCode.Escape)&&point==0))
         {
-            
-            
             button_active(true);
             Ui.SetActive(true);
             point = 1;
@@ -44,18 +42,14 @@ public class NewBehaviourScript13 : MonoBehaviour
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Audio_hantei(false);
-
         }
     }
     public void crick_escape()
     {
-        
         button_active(false);
         button[0].image.color = normalColor;
         point = 0;
         if(hantei!=3) script_hantei(true);
-        
-        
         Ui.SetActive(false);
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
@@ -70,8 +64,6 @@ public class NewBehaviourScript13 : MonoBehaviour
     public void crick_setting()
     {
         crick_syestem(1);
-
-
     }
     public void crick_title()
     {
