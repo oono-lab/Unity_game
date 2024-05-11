@@ -15,14 +15,8 @@ public class fadein : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   if (hantei == 0)
-        {
-            FadeManager.Instance.Load(scene, fade_speed, hantei);
-        }
-        else
-        {
-            return;
-        }
-        
+    {   
+        if (hantei == 0) FadeManager.Instance.Load(scene, fade_speed, hantei);            
+        else return;
     }
 }
