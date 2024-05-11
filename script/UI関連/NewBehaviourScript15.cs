@@ -11,29 +11,22 @@ public class NewBehaviourScript15 : MonoBehaviour
 
     void Start()
     {
-        // ƒZ[ƒu‚³‚ê‚½‰ğ‘œ“x‚ğ“Ç‚İ‚ŞBƒZ[ƒu‚³‚ê‚Ä‚¢‚È‚¯‚ê‚ÎƒfƒtƒHƒ‹ƒg’l‚ğg—p‚·‚éB
+        // ã‚»ãƒ¼ãƒ–ã•ã‚ŒãŸè§£åƒåº¦ã‚’èª­ã¿è¾¼ã‚€ã€‚ã‚»ãƒ¼ãƒ–ã•ã‚Œã¦ã„ãªã‘ã‚Œã°ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’ä½¿ç”¨ã™ã‚‹ã€‚
         int savedValue = PlayerPrefs.GetInt(selectedResolutionKey, 0);
         dropdown.value = savedValue;
-        OnResolutionChanged(); // ƒhƒƒbƒvƒ_ƒEƒ“‚Ì’l‚ÉŠî‚Ã‚¢‚Ä‰ğ‘œ“x‚ğİ’è‚·‚é
+        OnResolutionChanged(); // ãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³ã®å€¤ã«åŸºã¥ã„ã¦è§£åƒåº¦ã‚’è¨­å®šã™ã‚‹
     }
 
-    // Dropdown‚Ì‘I‘ğ‚ª•ÏX‚³‚ê‚½‚Æ‚«‚ÉŒÄ‚Ño‚³‚ê‚éŠÖ”
+    // Dropdownã®é¸æŠãŒå¤‰æ›´ã•ã‚ŒãŸã¨ãã«å‘¼ã³å‡ºã•ã‚Œã‚‹é–¢æ•°
     public void OnResolutionChanged()
     {
-        if (dropdown.value == 0)
-        {
-            Screen.SetResolution(1920, 1080, FullScreenMode.FullScreenWindow, 60);
-        }
-        else if (dropdown.value == 1)
-        {
-            Screen.SetResolution(1920, 1080, FullScreenMode.Windowed, 60);
-        }
-
-        // ‘I‘ğ‚³‚ê‚½‰ğ‘œ“x‚ğ•Û‘¶‚·‚é
+        if (dropdown.value == 0) Screen.SetResolution(1920, 1080, FullScreenMode.FullScreenWindow, 60);
+        else Screen.SetResolution(1920, 1080, FullScreenMode.Windowed, 60);
+        // é¸æŠã•ã‚ŒãŸè§£åƒåº¦ã‚’ä¿å­˜ã™ã‚‹
         PlayerPrefs.SetInt(selectedResolutionKey, dropdown.value);
     }
 
-    // •K—v‚É‰‚¶‚ÄAƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ğI—¹‚·‚éÛ‚ÉƒZ[ƒu‚·‚é
+    // å¿…è¦ã«å¿œã˜ã¦ã€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’çµ‚äº†ã™ã‚‹éš›ã«ã‚»ãƒ¼ãƒ–ã™ã‚‹
     void OnApplicationQuit()
     {
         PlayerPrefs.Save();
