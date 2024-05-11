@@ -97,10 +97,7 @@ public class DisplayTextOnKeyPress : MonoBehaviour
                     
                     count = 0;
                     text_root();
-                    if (game_setumei_UI ==null)
-                    {
-                        script_hantei(true);
-                    }
+                    if (game_setumei_UI ==null) script_hantei(true);
                     else
                     {
                         
