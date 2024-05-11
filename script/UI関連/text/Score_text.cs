@@ -13,7 +13,6 @@ public class Score_text : MonoBehaviour
     {
         GameObject targetObject = GameObject.Find(GameObject_name);
         current_pt = targetObject.GetComponent<game_clear_hantei>();
-
     }
 
     // Update is called once per frame
