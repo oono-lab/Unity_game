@@ -5,13 +5,7 @@ using UnityEngine;
 public class NewBehaviourScript11 : MonoBehaviour
 {
     public Light light_this;
-    private float timer = 0f; // 時間計測用のタイマー
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    private float timer = 0f;
     // Update is called once per frame
     void Update()
     {
@@ -19,14 +13,8 @@ public class NewBehaviourScript11 : MonoBehaviour
         if (timer >= 2)
         {
             light_this.enabled = false;
-            if ((timer >= 2.1))
-            {
-                light_this.enabled = true;
-            }
-            if ((timer >= 2.2))
-            {
-                light_this.enabled = false;
-            }
+            if ((timer >= 2.1)) light_this.enabled = true;
+            if ((timer >= 2.2)) light_this.enabled = false;       
             if ((timer >= 2.3))
             {
                 light_this.enabled = true;
