@@ -5,14 +5,13 @@ using UnityEngine;
 public class VolumeControl : MonoBehaviour
 {
 
-    public Transform target; // ‰¹—Ê‚ğ’²®‚µ‚½‚¢ƒ^[ƒQƒbƒgƒIƒuƒWƒFƒNƒg
+    public Transform target; // éŸ³é‡ã‚’èª¿æ•´ã—ãŸã„ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
     private AudioSource audioSource;
-    public float maxDistance = 10f; // Å‘å‹——£// Start is called before the first frame update
+    public float maxDistance = 10f; // æœ€å¤§è·é›¢// Start is called before the first frame update
     void Start()
     {
         GameObject oni = this.gameObject;
         audioSource= oni.GetComponent<AudioSource>();
-        
     }
 
     // Update is called once per frame
@@ -21,16 +20,16 @@ public class VolumeControl : MonoBehaviour
         
 
         float distance = Vector3.Distance(transform.position, target.position);
-        // Å‘å‹——£“à‚Ìê‡
+        // æœ€å¤§è·é›¢å†…ã®å ´åˆ
         if (distance <= maxDistance)
         {
-            // ‹——£‚É‰‚¶‚Ä‰¹—Ê‚ğ’²®
-            float volume = 1f - (distance / maxDistance); // Å‘å‹——£‚É‘Î‚·‚éŠ„‡
+            // è·é›¢ã«å¿œã˜ã¦éŸ³é‡ã‚’èª¿æ•´
+            float volume = 1f - (distance / maxDistance); // æœ€å¤§è·é›¢ã«å¯¾ã™ã‚‹å‰²åˆ
             audioSource.volume = volume;
         }
         else
         {
-            // Å‘å‹——£‚ğ’´‚¦‚½ê‡‚Í‰¹—Ê‚ğ0‚É‚·‚é
+            // æœ€å¤§è·é›¢ã‚’è¶…ãˆãŸå ´åˆã¯éŸ³é‡ã‚’0ã«ã™ã‚‹
             audioSource.volume = 0f;
         }
     }
