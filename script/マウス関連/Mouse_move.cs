@@ -16,14 +16,10 @@ public class Mouse_move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        if (PlayerPrefs.HasKey(variableKey))
-        {
-            scrollbar.value = PlayerPrefs.GetFloat(variableKey);
-        }
+        if (PlayerPrefs.HasKey(variableKey)) scrollbar.value = PlayerPrefs.GetFloat(variableKey);
         player = GameObject.Find("player");
         this_obj = this.gameObject;
         scrollbar.onValueChanged.AddListener(delegate { OnScrollbarValueChanged(); });
-        
         Cursor.lockState = CursorLockMode.Locked;
     }
 
