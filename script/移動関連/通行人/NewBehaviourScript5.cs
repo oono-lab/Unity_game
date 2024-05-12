@@ -5,49 +5,35 @@ using UnityEngine;
 public class NewBehaviourScript5 : MonoBehaviour
 {
     // Start is called before the first frame update
-    private float lastZ; // ‘O‰ñ‚ÌzŽ²‚Ì’l
-    private float timer; // Œo‰ßŽžŠÔ
+    private float lastZ; // å‰å›žã®zè»¸ã®å€¤
+    private float timer; // çµŒéŽæ™‚é–“
     public float thresholdZ = 1.0f;
     public float thresholdZ1 = 1.0f;
     public GameObject object1;
     void Start()
     {
-        // ‰Šú‰»
+        // åˆæœŸåŒ–
 
         lastZ = transform.position.z;
         timer = 0f;
         
-        // ˆê’è‚ÌzÀ•W‚Ìè‡’l
+        // ä¸€å®šã®zåº§æ¨™ã®é–¾å€¤
 
     }
 
 void Update()
     {
-        // zŽ²‚Ì’l‚ª1‚ÌˆÊ‚ª•Ï‰»‚µ‚È‚©‚Á‚½ê‡
+        // zè»¸ã®å€¤ãŒ1ã®ä½ãŒå¤‰åŒ–ã—ãªã‹ã£ãŸå ´åˆ
         if (Mathf.FloorToInt(transform.position.z) % 10 == Mathf.FloorToInt(lastZ) % 10)
         {
-            // Œo‰ßŽžŠÔ‚ð‰ÁŽZ
+            // çµŒéŽæ™‚é–“ã‚’åŠ ç®—
             timer += Time.deltaTime;
-
-            // Œo‰ßŽžŠÔ‚ª5•bˆÈãŒo‰ß‚µ‚½ê‡
-            if (timer >= 5.0f)
-            {
-                // ƒIƒuƒWƒFƒNƒg‚ðÁ‚·
-                Destroy(gameObject);
-            }
+            // çµŒéŽæ™‚é–“ãŒ5ç§’ä»¥ä¸ŠçµŒéŽã—ãŸå ´åˆ
+            if (timer >= 5.0f) Destroy(gameObject);  
         }
-        else
-        {
-            // zŽ²‚Ì’l‚ª•Ï‰»‚µ‚½ê‡‚ÍŒo‰ßŽžŠÔ‚ðƒŠƒZƒbƒg
-            timer = 0f;
-        }
-        
-        // Œ»Ý‚ÌzŽ²‚Ì’l‚ðXV
+        else timer = 0f; // zè»¸ã®å€¤ãŒå¤‰åŒ–ã—ãŸå ´åˆã¯çµŒéŽæ™‚é–“ã‚’ãƒªã‚»ãƒƒãƒˆ
+        // ç¾åœ¨ã®zè»¸ã®å€¤ã‚’æ›´æ–°
         lastZ = transform.position.z;
-        if ((lastZ > thresholdZ1) || (lastZ < thresholdZ))
-        {
-            // ƒIƒuƒWƒFƒNƒg‚ðÁ‚·
-            Destroy(gameObject);
-        }
+        if ((lastZ > thresholdZ1) || (lastZ < thresholdZ)) Destroy(gameObject);
     }
 }
