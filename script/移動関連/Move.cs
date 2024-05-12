@@ -32,10 +32,7 @@ public class Move : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.S))
             {
                 
-                if (run_or_walk == 1)
-                {
-                    StopAudio();
-                }
+                if (run_or_walk == 1) StopAudio();
                 run_or_walk = 0;
                 PlayAudio(1);
                 Vector3 handBob = headBob_.DoHeadBob(4.0f);
@@ -44,10 +41,7 @@ public class Move : MonoBehaviour
             }
             else
             {
-                if (run_or_walk == 0)
-                {
-                    StopAudio();
-                }
+                if (run_or_walk == 0) StopAudio();
                 run_or_walk = 1;
                 PlayAudio(0);
                 Vector3 handBob = headBob_.DoHeadBob(2.0f);
@@ -62,12 +56,6 @@ public class Move : MonoBehaviour
             Vector3 handBob = headBob_.DoHeadBob(0.0f);
             cameraTransform_.localPosition = handBob;
         }
-        
-        
-       
-            
-        
-        
     }
     void PlayAudio(int num)
     {
@@ -80,6 +68,6 @@ public class Move : MonoBehaviour
     }
     public void StopAudio()
     {
-        if (audioSource.isPlaying) audioSource.Stop(); // 再生中のオーディオを停止
+        if (audioSource.isPlaying) audioSource.Stop(); // 蜀咲函荳ｭ縺ｮ繧ｪ繝ｼ繝�繧｣繧ｪ繧貞●豁｢
     }
 }
