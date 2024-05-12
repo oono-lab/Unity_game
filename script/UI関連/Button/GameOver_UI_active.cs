@@ -16,10 +16,6 @@ public class GameOver_UI_active : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (fade_hantei.isFading == false)
-        {
-            foreach (GameObject button in button_UI) button.SetActive(true);
-
-        }
+        if (fade_hantei.isFading == false) foreach (GameObject button in button_UI) button.SetActive(true);
     }
 }
