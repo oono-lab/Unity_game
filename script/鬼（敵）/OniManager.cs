@@ -21,7 +21,6 @@ public class OniManager : MonoBehaviour
         GameObject targetObject2 = GameObject.Find(GameObject_name2);
         hantei_crear = targetObject2.GetComponent<DisplayTextOnKeyPress>();
         GameObject oni = this.gameObject;
-
         oni_animator = oni.GetComponent<Animator>();
         GameObject targetObject1 = GameObject.Find(GameObject_name);
         run = targetObject1.GetComponent<NewBehaviourScript13>();
