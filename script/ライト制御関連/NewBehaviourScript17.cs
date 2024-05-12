@@ -6,7 +6,7 @@ public class NewBehaviourScript17 : MonoBehaviour
 {
     // Start is called before the first frame update
     public Light light_this;
-    private float timer = 0f; // ŽžŠÔŒv‘ª—p‚Ìƒ^ƒCƒ}[
+    private float timer = 0f; // Å½Å¾Å Ã”Å’vâ€˜Âªâ€”pâ€šÃŒÆ’^Æ’CÆ’}Â[
     private float light_hikaku;
     // Start is called before the first frame update
     void Start()
@@ -18,22 +18,12 @@ public class NewBehaviourScript17 : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-       if(timer>=0.1&& light_hikaku== light_this.intensity)
-        {
-            light_this.intensity = light_this.intensity - 1;
-        }
+        if(timer>=0.1&& light_hikaku== light_this.intensity) light_this.intensity = light_this.intensity - 1;
         if(timer >= 0.2)
         {
             //Debug.Log(timer);
             light_this.intensity = light_this.intensity + 1;
             timer = 0f;
         }
-          
-
-            
-            
-            
-        
-
     }
 }
