@@ -8,29 +8,17 @@ public class oni_caught_timeline : MonoBehaviour
 {
     public PlayableDirector timelineToPlay;
     public GameObject oni_timeline_stand;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-      
-        
-
-    }
 
     // Update is called once per frame
     void OnTriggerEnter(Collider other)
     {
-        // Õ“Ë‚µ‚½ƒIƒuƒWƒFƒNƒg‚ª“Á’è‚Ìƒ^ƒO‚ðŽ‚Á‚Ä‚¢‚éê‡‚Éˆ—‚ðs‚¤
+        // è¡çªã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç‰¹å®šã®ã‚¿ã‚°ã‚’æŒã£ã¦ã„ã‚‹å ´åˆã«å‡¦ç†ã‚’è¡Œã†
         if (other.CompareTag("humanObject"))
         {
             Cursor.lockState = CursorLockMode.None;
             oni_timeline_stand.SetActive(true);
             timelineToPlay.Play();
-            foreach (Transform child in transform)
-            {
-                child.gameObject.SetActive(false);
-            }
-
+            foreach (Transform child in transform) child.gameObject.SetActive(false);
         }
     }
 }
