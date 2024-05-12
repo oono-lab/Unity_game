@@ -5,25 +5,16 @@ using UnityEngine.Playables;
 
 public class DisableScriptDuringTimeline : MonoBehaviour
 {
-    public List<MonoBehaviour> scriptsToDisable; // –³Œø‚É‚·‚éƒXƒNƒŠƒvƒg‚ÌƒŠƒXƒg‚ğw’è
-    public List<PlayableDirector> timelines; // ƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğw’è
+    public List<MonoBehaviour> scriptsToDisable; // ç„¡åŠ¹ã«ã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆã®ãƒªã‚¹ãƒˆã‚’æŒ‡å®š
+    public List<PlayableDirector> timelines; // ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’æŒ‡å®š
 
     void Update()
     {
-        // ƒ^ƒCƒ€ƒ‰ƒCƒ“‚ªÄ¶’†‚©‚Ç‚¤‚©‚ğŠm”F
+        // ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ãŒå†ç”Ÿä¸­ã‹ã©ã†ã‹ã‚’ç¢ºèª
         foreach (var timeline in timelines)
         {
-            if (timeline != null && timeline.state == PlayState.Playing)
-            {
-                // ƒŠƒXƒg“à‚Ì‘S‚Ä‚ÌƒXƒNƒŠƒvƒg‚ğ–³Œø‚É‚·‚é
-                foreach (var script in scriptsToDisable) script.enabled = false;
-            }
-            else
-            {
-                // ƒ^ƒCƒ€ƒ‰ƒCƒ“‚ªÄ¶’†‚Å‚È‚¢ê‡AƒŠƒXƒg“à‚Ì‘S‚Ä‚ÌƒXƒNƒŠƒvƒg‚ğ—LŒø‚É‚·‚é
-                foreach (var script in scriptsToDisable) script.enabled = true;
-
-            }
+            if (timeline != null && timeline.state == PlayState.Playing) foreach (var script in scriptsToDisable) script.enabled = false;// ãƒªã‚¹ãƒˆå†…ã®å…¨ã¦ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’ç„¡åŠ¹ã«ã™ã‚‹
+            else foreach (var script in scriptsToDisable) script.enabled = true;// ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ãŒå†ç”Ÿä¸­ã§ãªã„å ´åˆã€ãƒªã‚¹ãƒˆå†…ã®å…¨ã¦ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’æœ‰åŠ¹ã«ã™ã‚‹
         }
     }
 }
