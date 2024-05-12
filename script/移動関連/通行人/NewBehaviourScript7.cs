@@ -10,12 +10,6 @@ public class NewBehaviourScript7 : MonoBehaviour
 
 
     public float referenceX = 0.0f;
-
-    
-    void Update()
-    {
-        
-    }
     void OnCollisionEnter(Collision collision)
     {
         HandleCollision(collision);
@@ -23,7 +17,7 @@ public class NewBehaviourScript7 : MonoBehaviour
 
     void HandleCollision(Collision collision)
     {
-        // Õ“Ë‚µ‚½‘ÎÛ‚ª‘¼‚ÌƒIƒuƒWƒFƒNƒg‚Å‚ ‚éê‡
+        // è¡çªã—ãŸå¯¾è±¡ãŒä»–ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ã‚ã‚‹å ´åˆ
         if (collision.gameObject.CompareTag(OtherObject))
         {
             Vector3 collisionNormal = collision.contacts[0].normal;
@@ -31,16 +25,8 @@ public class NewBehaviourScript7 : MonoBehaviour
             {
                 float currentX = transform.position.x;
 
-                if (currentX <= referenceX)
-                {
-                    // ¶‚É‚¸‚ç‚·
-                    ShiftObject(-1.0f);
-                }
-                else
-                {
-                    // ‰E‚É‚¸‚ç‚·
-                    ShiftObject(1.0f);
-                }
+                if (currentX <= referenceX) ShiftObject(-1.0f); // å·¦ã«ãšã‚‰ã™
+                else ShiftObject(1.0f); // å³ã«ãšã‚‰ã™
             }
         }
 
@@ -51,46 +37,35 @@ public class NewBehaviourScript7 : MonoBehaviour
             {
                 float currentX = transform.position.x;
 
-                if (currentX <= referenceX)
-                {
-                    // ¶‚É‚¸‚ç‚·
-                    ShiftObject(-1.0f);
-                }
-                else
-                {
-                    // ‰E‚É‚¸‚ç‚·
-                    ShiftObject(1.0f);
-                }
+                if (currentX <= referenceX) ShiftObject(-1.0f); // å·¦ã«ãšã‚‰ã™
+                else ShiftObject(1.0f); // å³ã«ãšã‚‰ã™
             }
         }
-        else
-        {
-            return;
-        }
+        else return;
     }
 
     void ShiftObject(float direction)
     {
-        // ˆÚ“®‚·‚é•ûŒü‚ğw’è‚µ‚Ü‚·
+        // ç§»å‹•ã™ã‚‹æ–¹å‘ã‚’æŒ‡å®šã—ã¾ã™
         Vector3 shiftDirection = transform.right * direction;
 
-        // ˆÚ“®‚·‚é‹——£‚ğw’è‚µ‚Ü‚·
+        // ç§»å‹•ã™ã‚‹è·é›¢ã‚’æŒ‡å®šã—ã¾ã™
         float shiftAmount = 1.0f;
 
-        // Ÿ‚ÌƒtƒŒ[ƒ€‚Å‚ÌˆÊ’u‚ğŒvZ‚µ‚Ü‚·
+        // æ¬¡ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã§ã®ä½ç½®ã‚’è¨ˆç®—ã—ã¾ã™
         Vector3 nextPosition = transform.position + shiftDirection * shiftAmount;
 
-        // Ÿ‚ÌƒtƒŒ[ƒ€‚ÅˆÊ’u‚ğXV‚µ‚Ü‚·
+        // æ¬¡ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã§ä½ç½®ã‚’æ›´æ–°ã—ã¾ã™
         StartCoroutine(MoveToObject(nextPosition));
     }
 
     IEnumerator MoveToObject(Vector3 targetPosition)
     {
-        float duration = 0.5f; // ˆÚ“®‚É‚©‚©‚éŠÔi•bj
+        float duration = 0.5f; // ç§»å‹•ã«ã‹ã‹ã‚‹æ™‚é–“ï¼ˆç§’ï¼‰
         float elapsedTime = 0f;
         Vector3 startingPosition = transform.position;
 
-        // w’è‚µ‚½ŠÔ“à‚ÉˆÚ“®‚³‚¹‚é
+        // æŒ‡å®šã—ãŸæ™‚é–“å†…ã«ç§»å‹•ã•ã›ã‚‹
         while (elapsedTime < duration)
         {   
             transform.position = Vector3.Lerp(startingPosition, targetPosition, (elapsedTime / duration));
@@ -98,7 +73,7 @@ public class NewBehaviourScript7 : MonoBehaviour
             yield return null;
         }
 
-        // ÅI“I‚ÈˆÊ’u‚ğİ’è
+        // æœ€çµ‚çš„ãªä½ç½®ã‚’è¨­å®š
         transform.position = targetPosition;
         
         
