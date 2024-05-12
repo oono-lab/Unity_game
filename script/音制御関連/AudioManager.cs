@@ -6,8 +6,8 @@ public class AudioManager : MonoBehaviour
 {
     private AudioSource audioSource;
     private GameObject Player;
-    public float fadeDuration = 2f; // ƒtƒF[ƒh‚ÌŠúŠÔi•bj
-    private float targetVolume_fadeout = 0f; // –Ú•W‚Ì‰¹—Ê
+    public float fadeDuration = 2f; // ãƒ•ã‚§ãƒ¼ãƒ‰ã®æœŸé–“ï¼ˆç§’ï¼‰
+    private float targetVolume_fadeout = 0f; // ç›®æ¨™ã®éŸ³é‡
 
     // Start is called before the first frame update
     void Start()
